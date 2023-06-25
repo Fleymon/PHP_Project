@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="projekt.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FleymoNews</title>
+
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <div><a href="projekt.php" class="logo">FleymoNews</a></div>
+    <ul class="nav-links">
+        <div class="menu">
+            <li><a href="projekt.php">Home</a></li>
+            <li><a href="sports.php">Sport</a></li>
+            <li><a href="politics.php">Politics</a></li>
+            <li><a href="writenews.html">Write FleymoNews</a></li>
+            <li><a href="administration.php">Administration</a></li>
+            <li><a href="registration.php">Register</a></li>
+            <li><a href="logout.php">Logout</a></li>
+        </div>
+    </ul>
+</nav>
+<div class="containerh1">
+    <h1>Article Creation</h1>
+    <form method="POST" action="process.php" enctype="multipart/form-data" onsubmit="return validateForm()" novalidate>
+        <label for="naslov">Title:</label>
+        <input type="text" name="naslov" id="naslov" required><br>
+        <p id="titleError" class="error"></p>
+
+        <label for="sazetak">Description:</label>
+        <textarea name="sazetak" id="sazetak" rows="4" required></textarea><br>
+        <p id="descriptionError" class="error"></p>
+
+        <label for="tekst">Article:</label>
+        <textarea name="tekst" id="tekst" rows="8" required></textarea><br>
+        <p id="contentError" class="error"></p>
+
+        <label for="kategorija">Category:</label>
+        <select name="kategorija" id="kategorija" required>
+            <option value=""></option>
+            <option value="sport">Sport</option>
+            <option value="politika">Politika</option>
+        </select><br>
+        <p id="categoryError" class="error"></p>
+
+        <label for="slika">IMG:</label>
+        <input type="file" name="slika" id="slika" required><br>
+        <p id="imageError" class="error"></p>
+
+        <label for="obavijest">Hide:</label>
+        <input type="checkbox" name="obavijest" id="obavijest"><br>
+
+        <input type="submit" value="Pošalji">
+    </form>
+</div>
+<footer class="footer">
+    <p>&copy; FLEYMONEWS DIGITAL PROPERTY / Eamon Gaš, 2023</p>
+</footer>
+
+<script>
+    function validateForm() {
+        var title = document.getElementById('naslov').value;
+        var description = document.getElementById('sazetak').value;
+        var content = document.getElementById('tekst').value;
+        var image = document.getElementById('slika').value;
+        var category = document.getElementById('kategorija').value;
+
+        // Resetting previous error styles
+        var formElements = [
+            document.getElementById('naslov'),
+            document.getElementById('sazetak'),
+            document.getElementById('tekst'),
+            document.getElementById('slika'),
+            document.getElementById('kategorija')
+        ];
+        for (var i = 0; i < formElements.length; i++) {
+            formElements[i].style.border = '';
+        }
+
+        var isValid = true;
+
+        // Title validation
+        if (title.length < 5 || title.length > 30) {
+            document.getElementById('titleError').innerHTML = 'Title must be between 5 and 30 characters.';
+            document.getElementById('titleError').style.display = 'block';
+            document.getElementById('naslov').style.border = '1px solid red';
+            isValid = false;
+        } else {
+            document.getElementById('titleError').style.display = 'none';
+        }
+
+        // Description validation
+        if (description.length < 10 || description.length > 100) {
+            document.getElementById('descriptionError').innerHTML = 'Description must be between 10 and 100 characters.';
+            document.getElementById('descriptionError').style.display = 'block';
+            document.getElementById('sazetak').style.border = '1px solid red';
+            isValid = false;
+        } else {
+            document.getElementById('descriptionError').style.display = 'none';
+        }
+
+        // Content validation
+        if (content.trim() === '') {
+            document.getElementById('contentError').innerHTML = 'Content cannot be empty.';
+            document.getElementById('contentError').style.display = 'block';
+            document.getElementById('tekst').style.border = '1px solid red';
+            isValid = false;
+        } else {
+            document.getElementById('contentError').style.display = 'none';
+        }
+
+        // Image validation
+        if (image === '') {
+            document.getElementById('imageError').innerHTML = 'Please select an image.';
+            document.getElementById('imageError').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('imageError').style.display = 'none';
+        }
+
+        // Category validation
+        if (category === '') {
+            document.getElementById('categoryError').innerHTML = 'Please select a category.';
+            document.getElementById('categoryError').style.display = 'block';
+            document.getElementById('kategorija').style.border = '1px solid red';
+            isValid = false;
+        } else {
+            document.getElementById('categoryError').style.display = 'none';
+        }
+
+        // If form is not valid, prevent form submission
+        if (!isValid) {
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

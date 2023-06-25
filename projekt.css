@@ -1,0 +1,205 @@
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px 0 0 0; /* Ovdje sam stavio "margin" na ovaj način" */
+    padding: 0;
+    overflow-y: scroll;
+    text-align: center;
+}
+
+
+body.clanak-page .content {
+  max-width: 600px;
+  margin: 20px;
+}
+
+body.clanak-page .img1 {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+body.clanak-page .frame {
+  margin-bottom: 20px;
+}
+#page-container {
+  min-height: 200vh;
+}
+h1 {
+  font-family: Helvetica;
+  text-align: center;
+}
+p {
+  font-family: Helvetica;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+.img1 {
+    height: auto;
+    width: 450px;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+.frame {
+  border: 2px solid black;
+  padding: 10px;
+}
+.outer-frame {
+  border: 2px solid black;
+  padding: 10px;
+}
+.articles {
+  margin-top: 20px;
+}
+.article-wrapper {
+    display: flex;
+}
+.article-wrapper article {
+    flex: 1;
+    max-width: 600px;
+}
+.category {
+  background-color: yellow;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  margin-top: 20px;
+}
+.category h2 {
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  font-family: Verdana;
+}
+.content {
+    position: relative;
+    margin-top: 40px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center; /* Dodajte ovu liniju */
+    flex-wrap: wrap; /* Dodajte ovu liniju */
+}
+.content article {
+  max-width: 600px;
+  margin-bottom: 20px; /* Dodajte ovu liniju */
+  overflow: hidden;
+}
+.content:before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background-color: black;
+  z-index: -1;
+  border: 1px solid black;
+}
+.content:first-child {
+  position: relative;
+    margin-top: 0;
+}
+.content:first-child:before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background-color: yellow;
+  z-index: -1;
+}
+.content:last-child .category {
+  background-color: yellow;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.navbar{
+    background-color: yellow;
+    font-family: Verdana;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index:1;
+    position: fixed;
+    top:0;
+    bottom:0;
+    -webkit-box-shadow: 0px 0px 8px 0px #000000;
+    -moz-box-shadow: 0px 0px 8px 0px #000000;
+    box-shadow: 0px 0px 8px 0px #000000;
+}
+.navbar .logo{
+    font-weight: bold;
+    font-size: 40px;
+    color: #333;
+    margin-left: 40px;
+}
+.navbar .menu{
+    list-style: none;
+    margin: 0;
+    padding :0;
+    display: flex;
+}
+.navbar .menu li{
+    margin-right: 10px;
+}
+.navbar .menu li a{
+    color: #333;
+    text-decoration: none;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+.navbar .menu li a:hover {
+    color: red;
+}
+.containerh1 {
+  text-align: center;
+  margin 100px 0;
+}
+.containerh1 h1 {
+  font-family: Helvetica;
+  text-align: center;
+}
+textarea {
+    font-size: 16px;
+    display: block;
+    margin: 0 auto;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: gray;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.error {
+  color: red;
+  display: none;
+  margin-top: 5px;
+}
